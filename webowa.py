@@ -20,3 +20,28 @@ if uploaded_file:
             st.write(f"• {krs}")
     else:
         st.warning("Nie znaleziono numerów KRS w pliku.")
+import pandas as pd
+import io
+
+# Po znalezieniu krs_numbers:
+if krs_numbers:
+    st.success(f"Znaleziono {len(krs_numbers)} numerów KRS:")
+    for krs in krs_numbers:
+        st.write(f"• {krs}")
+
+    # Przygotowanie danych jako DataFrame z jedną kolumną 'krs' (typ tekstowy)
+    df = pd.DataFrame({'krs': krs_numbers}, dtype=str)
+
+    # Zapis do Excela w pamięci
+    output = io.BytesIO()
+    with pd.ExcelWriter(output, engine='openpyxl') as writer:
+        df.to_excel(writer, index=False)
+    output.seek(0)
+
+    # Przycisk pobierania
+    st.download_button(
+        label="Pobierz jako Excel",
+        data=output,
+        file_name="numery_krs.xlsx",
+        mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+    )
