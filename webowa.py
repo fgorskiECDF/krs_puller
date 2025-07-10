@@ -7,49 +7,49 @@ import re
 import pandas as pd
 import io
 
-st.title("KRS PULLER - pobieranie numer贸w KRS z Rejestru.io")
+st.title("KRS PULLER - pobieranie numerów KRS z Rejestru.io")
 
-st.subheader("馃摡 W razie problem贸w/error贸w na stronach:")
+st.subheader("W razie problemów/errorów na stronach:")
 
-st.markdown("[Skontaktuj si臋 na Slacku](https://grupaecdf.slack.com/team/U08FLMFN60Y)")
+st.markdown("[Skontaktuj się na Slacku](https://grupaecdf.slack.com/team/U08FLMFN60Y)")
 st.markdown(
-    'Skontaktuj si臋 mailowo: <span style="color:purple">f.gorski@ecdf.pl</span>',
+    'Skontaktuj się mailowo: <span style="color:purple">f.gorski@ecdf.pl</span>',
     unsafe_allow_html=True
 )
 
 
 st.markdown("### Instrukcja:")
 st.markdown("""
-1. Wejd藕 na [Rejestr.io](https://rejestr.io) i wybierz interesuj膮ce ci臋 filtry np. bran偶a budowlana, lubuskie, zysk > 1 mln z艂 itp.  
-2. Rozwi艅 list臋 wynik贸w w rejestrze, tak aby pokaza艂y si臋 wszystkie podmioty, kt贸re chcesz wyszuka膰  
-3. Kliknij prawym przyciskiem na stron臋 i zapisz j膮 jako stron臋 internetow膮 (format .html)  
-4. Wrzu膰 zapisan膮 stron臋 w polu poni偶ej  
-5. Wygeneruje si臋 Excel na dole strony 鈥?pobierz go i sprawd藕, czy liczba numer贸w KRS zgadza si臋 z oczekiwanymi po wyszukaniu w rejestrze
-6. Przejd藕 do strony **KRS MINER** i wrzu膰 pobranego Excela  
+1. Wejdź na [Rejestr.io](https://rejestr.io) i wybierz interesujące Cię filtry np. branża budowlana, lubuskie, zysk > 1 mln zł itp.  
+2. Rozwiń listę wyników w rejestrze **do końca**, tak aby pokazały si wszystkie podmioty, które chcesz wyszukać 
+3. Kliknij prawym przyciskiem na stronę i zapisz ją jako strona internetowa (format .html)  
+4. Wrzuć zapisaną stronę w polu poniżej  
+5. Wygeneruje się Excel na dole strony - pobierz go i sprawdź, czy liczba numerów KRS zgadza się z oczekiwanymi po wyszukaniu w rejestrze
+6. Przejdź do strony **KRS MINER** i wrzuć pobranego Excela  
 """)
 
-uploaded_file = st.file_uploader("Zapisz stron臋 z Rejestru.io jako HTML i wgraj tutaj", type="html")
+uploaded_file = st.file_uploader("Zapisz stronę z Rejestru.io jako HTML i wgraj tutaj", type="html")
 
 if uploaded_file:
     html = uploaded_file.read().decode("utf-8")
     soup = BeautifulSoup(html, "html.parser")
     text = soup.get_text()
 
-    # Wyszukiwanie 10-cyfrowych numer贸w KRS
+    # Wyszukiwanie 10-cyfrowych numerów KRS
     krs_numbers = re.findall(r'\b\d{10}\b', text)
 
-    # Usuni臋cie duplikat贸w i sortowanie
+    # Usunięcie duplikatów i sortowanie
     unique_krs = sorted(set(krs_numbers))
 
     if unique_krs:
-        st.success(f"Znaleziono {len(unique_krs)} unikalnych numer贸w KRS:")
+        st.success(f"Znaleziono {len(unique_krs)} unikalnych numerów KRS:")
         for krs in unique_krs:
-            st.write(f"鈥?{krs}")
+            st.write(f"{krs}")
 
         # Tworzenie DataFrame
         df = pd.DataFrame({'krs': unique_krs}, dtype=str)
 
-        # Zapis do Excela w pami臋ci
+        # Zapis do Excela w pamięci
         output = io.BytesIO()
         with pd.ExcelWriter(output, engine='openpyxl') as writer:
             df.to_excel(writer, index=False)
@@ -63,4 +63,4 @@ if uploaded_file:
             mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
         )
     else:
-        st.warning("Nie znaleziono 偶adnych numer贸w KRS w pliku.")
+        st.warning("Nie znaleziono żadnych numerów KRS w pliku.")
