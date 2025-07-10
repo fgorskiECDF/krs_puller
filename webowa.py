@@ -6,6 +6,12 @@ import io
 
 st.title("KRS PULLER - pobieranie numerów KRS z Rejestru.io")
 
+st.subheader("📩 W razie problemów/errorów na stronach:")
+
+st.markdown('[Skontaktuj się na Slacku](https://grupaecdf.slack.com/team/U08FLMFN60Y)
+st.markdown('[Skontaktuj się mailowo](mailto:f.gorski@ecdf.pl')
+
+
 st.markdown("### Instrukcja:")
 st.markdown("""
 1. Wejdź na [Rejestr.io](https://rejestr.io) i wybierz interesujące cię filtry np. branża budowlana, lubuskie, zysk > 1 mln zł itp.  
