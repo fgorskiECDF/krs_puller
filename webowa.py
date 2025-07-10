@@ -2,9 +2,21 @@ import streamlit as st
 from bs4 import BeautifulSoup
 import re
 
-st.title("Ekstraktor numerów KRS z pliku HTML")
+st.title("KRS PULLER - Krok 1. pobieranie numerów krs z Rejestru.io")
 
-uploaded_file = st.file_uploader("Zapisz stronę z rejestru io jako html i wgraj tutaj", type="html")
+st.markdown("### Instrukcja:")
+
+st.markdown("""
+1. Wejdź na Rejestr.io i wybierz interesujące cię filtry np. branża budowlana, lubuskie, zysk>1mln zł itp.
+2. Rozwiń listę wyników w rejestrze, tak aby pokazały się wszystkie podmioty, które chcesz wyszukać
+2. Kliknij prawym przyciskiem na stronę i zapisz ją jako strona internetowa (format .html)
+3. Wrzuć zapisaną stronę w pliku poniżej
+4. Wygeneruje Ci się excel na dole strony, pobierz go i sprawdź czy liczba numerów krs zgadza się z porządaną liczbą 
+5. Przejdź do strony KRS MINER i wrzuć pobranego excela
+""")
+
+uploaded_file = st.file_uploader("Zapisz stronę z Rejestru.io jako html i wgraj tutaj", type="html")
+krs_numbers = []
 
 if uploaded_file:
     html = uploaded_file.read().decode("utf-8")
