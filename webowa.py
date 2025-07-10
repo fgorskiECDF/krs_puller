@@ -21,7 +21,7 @@ st.markdown(
 st.markdown("### Instrukcja:")
 st.markdown("""
 1. Wejdź na [Rejestr.io](https://rejestr.io) i wybierz interesujące Cię filtry np. branża budowlana, lubuskie, zysk > 1 mln zł itp.  
-2. Rozwiń listę wyników w rejestrze **do końca**, tak aby pokazały si wszystkie podmioty, które chcesz wyszukać 
+2. Rozwiń listę wyników w rejestrze **do końca**, tak aby pokazały się wszystkie podmioty, które chcesz wyszukać 
 3. Kliknij prawym przyciskiem na stronę i zapisz ją jako strona internetowa (format .html)  
 4. Wrzuć zapisaną stronę w polu poniżej  
 5. Wygeneruje się Excel na dole strony - pobierz go i sprawdź, czy liczba numerów KRS zgadza się z oczekiwanymi po wyszukaniu w rejestrze
