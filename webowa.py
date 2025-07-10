@@ -2,7 +2,7 @@ import streamlit as st
 from bs4 import BeautifulSoup
 import re
 
-st.title("KRS PULLER - Krok 1. pobieranie numerów krs z Rejestru.io")
+st.title("KRS PULLER - pobieranie numerów krs z Rejestru.io")
 
 st.markdown("### Instrukcja:")
 
@@ -10,7 +10,7 @@ st.markdown("""
 1. Wejdź na [Rejestr.io](https://rejestr.io) i wybierz interesujące cię filtry np. branża budowlana, lubuskie, zysk>1mln zł itp.
 2. Rozwiń listę wyników w rejestrze, tak aby pokazały się wszystkie podmioty, które chcesz wyszukać
 2. Kliknij prawym przyciskiem na stronę i zapisz ją jako strona internetowa (format .html)
-3. Wrzuć zapisaną stronę w pliku poniżej
+3. Wrzuć zapisaną stronę w polu poniżej
 4. Wygeneruje Ci się excel na dole strony, pobierz go i sprawdź czy liczba numerów krs zgadza się z porządaną liczbą 
 5. Przejdź do strony KRS MINER i wrzuć pobranego excela
 """)
@@ -34,12 +34,6 @@ if uploaded_file:
         st.warning("Nie znaleziono numerów KRS w pliku.")
 import pandas as pd
 import io
-
-# Po znalezieniu krs_numbers:
-if krs_numbers:
-    st.success(f"Znaleziono {len(krs_numbers)} numerów KRS:")
-    for krs in krs_numbers:
-        st.write(f"• {krs}")
 
     # Przygotowanie danych jako DataFrame z jedną kolumną 'krs' (typ tekstowy)
     df = pd.DataFrame({'krs': krs_numbers}, dtype=str)
