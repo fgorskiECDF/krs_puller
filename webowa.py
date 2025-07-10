@@ -7,7 +7,7 @@ st.title("KRS PULLER - Krok 1. pobieranie numerów krs z Rejestru.io")
 st.markdown("### Instrukcja:")
 
 st.markdown("""
-1. Wejdź na Rejestr.io i wybierz interesujące cię filtry np. branża budowlana, lubuskie, zysk>1mln zł itp.
+1. Wejdź na [Rejestr.io](https://rejestr.io) i wybierz interesujące cię filtry np. branża budowlana, lubuskie, zysk>1mln zł itp.
 2. Rozwiń listę wyników w rejestrze, tak aby pokazały się wszystkie podmioty, które chcesz wyszukać
 2. Kliknij prawym przyciskiem na stronę i zapisz ją jako strona internetowa (format .html)
 3. Wrzuć zapisaną stronę w pliku poniżej
