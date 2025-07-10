@@ -8,8 +8,8 @@ st.title("KRS PULLER - pobieranie numerów KRS z Rejestru.io")
 
 st.subheader("📩 W razie problemów/errorów na stronach:")
 
-st.markdown('[Skontaktuj się na Slacku](https://grupaecdf.slack.com/team/U08FLMFN60Y)
-st.markdown('[Skontaktuj się mailowo](mailto:f.gorski@ecdf.pl')
+st.markdown("[Skontaktuj się na Slacku](https://grupaecdf.slack.com/team/U08FLMFN60Y)")
+st.markdown("[Skontaktuj się mailowo](mailto:f.gorski@ecdf.pl")
 
 
 st.markdown("### Instrukcja:")
