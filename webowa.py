@@ -25,7 +25,7 @@ st.markdown("""
 3. Kliknij prawym przyciskiem na stronę i zapisz ją jako strona internetowa (format .html)  
 4. Wrzuć zapisaną stronę w polu poniżej  
 5. Wygeneruje się Excel na dole strony - pobierz go i sprawdź, czy liczba numerów KRS zgadza się z oczekiwanymi po wyszukaniu w rejestrze
-6. Przejdź do strony **KRS MINER** i wrzuć pobranego Excela  
+6. Przejdź do strony [**KRS MINER**](https://krsminer2-bwtzz46xfitafo4ckijw8u.streamlit.app/) i wrzuć pobranego Excela
 """)
 
 uploaded_file = st.file_uploader("Zapisz stronę z Rejestru.io jako HTML i wgraj tutaj", type="html")
